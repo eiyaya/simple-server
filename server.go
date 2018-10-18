@@ -14,7 +14,7 @@ func main() {
 		fmt.Println("监听端口出错!")
 	}
 	for {
-		conn, err := l.Accept() // 
+		conn, err := l.Accept() // conn is a *netFD
 		if err != nil {
 			fmt.Println("客户端连接失败")
 			conn.Close()
@@ -33,7 +33,7 @@ func handleMessage(conn net.Conn){
 			fmt.Println(err)
 			break
 		}
-		fmt.Printf("read %d byte from client!\n", nByte)
+		fmt.Printf("read %d bytes from client!\n", nByte)
 		s := string(buf[:nByte])
 		fmt.Println(s)
 	}
